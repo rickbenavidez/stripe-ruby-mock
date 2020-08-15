@@ -41,11 +41,19 @@ module StripeMock
         }.merge(params)
       end
 
+      def create_price(params={})
+        Stripe::Price.create create_price_params(params)
+      end
+
+      def create_price_params(params={})
+        {
+          :currency => StripeMock.default_currency,
+        }.merge(params)
+      end
 
       def list_subscriptions(limit)
         Stripe::Subscription.list(limit: limit)
       end
-
 
       def generate_card_token(card_params={})
         card_data = { :number => "4242424242424242", :exp_month => 9, :exp_year => (Time.now.year + 5), :cvc => "999", :tokenization_method => nil }
