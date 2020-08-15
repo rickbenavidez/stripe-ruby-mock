@@ -20,7 +20,7 @@ module StripeMock
         Data.mock_list_object(subscription[:items][:data], params)
       end
 
-      def update_subscription_item(route, method_url, params, headers)
+      def update_subscription_items(route, method_url, params, headers)
         route =~ method_url
 
         subscription_item_id = $1
